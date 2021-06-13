@@ -1,0 +1,19 @@
+name: GitHub CLI
+
+on:
+  push:
+    paths:
+      - .github/workflows/gh.yml
+  workflow_dispatch:
+
+jobs:
+  help:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: gh --help
+      - run: gh repo --help
+      - run: gh actions --help
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: gh actions --help
